@@ -1,25 +1,27 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 
-const HomePage = ({ data }) => {
+const AdventurePage = ({ data }) => {
   return (
     <pre>{JSON.stringify(data, null, 2)}</pre>
   )
 }
 
 export const query = graphql`
-  {
+  query ($slug: String!, $previous: String, $next: String) {
     site {
       siteMetadata {
         siteUrl
       }
     }
-    contentfulPage(slug: {eq: "home"}) {
+    node: contentfulAdventure(slug: {eq: $slug}) {
       contentful_id
-      isHome
-      isAdventures
       slug
       title
+      year: date(formatString: "YYYY")
+      month: date(formatString: "MM")
+      day: date(formatString: "DD")
+      date(formatString: "MMMM Do, YYYY")
       description {
         description
       }
@@ -35,6 +37,7 @@ export const query = graphql`
         description
         gatsbyImageData(placeholder: BLURRED)
       }
+      characters
       content {
         raw
         references {
@@ -49,13 +52,29 @@ export const query = graphql`
         }
       }
     }
+    previous: contentfulAdventure(slug: {eq: $previous}) {
+      contentful_id
+      slug
+      title
+      year: date(formatString: "YYYY")
+      month: date(formatString: "MM")
+      day: date(formatString: "DD")
+    }
+    next: contentfulAdventure(slug: {eq: $next}) {
+      contentful_id
+      slug
+      title
+      year: date(formatString: "YYYY")
+      month: date(formatString: "MM")
+      day: date(formatString: "DD")
+    }
   }
 `
 
-export default HomePage
+export default AdventurePage
 
 export const Head = ({ data }) => {
   return (
-    <title>home page</title>
+    <title>adventure name</title>
   )
 }

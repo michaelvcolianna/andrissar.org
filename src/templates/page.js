@@ -1,22 +1,21 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 
-const HomePage = ({ data }) => {
+const SimplePage = ({ data }) => {
   return (
     <pre>{JSON.stringify(data, null, 2)}</pre>
   )
 }
 
 export const query = graphql`
-  {
+  query ($slug: String) {
     site {
       siteMetadata {
         siteUrl
       }
     }
-    contentfulPage(slug: {eq: "home"}) {
+    contentfulPage(slug: {eq: $slug}) {
       contentful_id
-      isHome
       isAdventures
       slug
       title
@@ -52,10 +51,10 @@ export const query = graphql`
   }
 `
 
-export default HomePage
+export default SimplePage
 
 export const Head = ({ data }) => {
   return (
-    <title>home page</title>
+    <title>page name</title>
   )
 }

@@ -20,10 +20,8 @@ if(!spaceId || !accessToken) {
  */
 module.exports = {
   siteMetadata: {
-    description: 'Dungeons & Dragons campaign website for Andrissar 719.',
-    siteUrl: siteUrl,
-    title: `Andrissar 719 - A 5E D&D Campaign`,
-    url: siteUrl
+    perPage: parseInt(process.env.PER_PAGE) || 10,
+    siteUrl: siteUrl
   },
   plugins: [
     'gatsby-plugin-image',
