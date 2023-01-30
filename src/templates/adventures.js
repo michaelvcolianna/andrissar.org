@@ -1,21 +1,12 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
 
+import Seo from '@components/seo'
 import Layout from '@components/layout'
 import HeroImage from '@components/hero-image'
 import Pagination from '@components/pagination'
 
-const adventureLink = (adventure) => {
-  let parts = [
-    'adventures',
-    adventure.year,
-    adventure.month,
-    adventure.day,
-    adventure.slug
-  ]
-
-  return `/${parts.join('/')}`
-}
+import adventureLink from '@utils/adventure-link'
 
 const AdventuresPage = ({
   data: {
@@ -77,14 +68,8 @@ const AdventuresPage = ({
 
 export const query = graphql`
   query ($skip: Int!, $limit: Int!) {
-    site {
-      siteMetadata {
-        siteUrl
-      }
-    }
     contentfulPage(slug: {eq: "adventures"}) {
       contentful_id
-      isAdventures
       slug
       title
       description {
@@ -136,16 +121,28 @@ export default AdventuresPage
 
 export const Head = ({
   data: {
+    contentfulPage: {
+      description: {
+        description
+      },
+      card: {
+        url
+      }
+    },
     allContentfulAdventure: {
       pageInfo
     }
   }
 }) => {
-  const pageNumber = pageInfo.currentPage > 1
-    ? ` - page ${pageInfo.currentPage}`
+  const pageNumber = pageInfo.pageCount > 1
+    ? ` (Page ${pageInfo.currentPage} of ${pageInfo.pageCount})`
     : ''
 
   return (
-    <title>adventures{pageNumber}</title>
+    <Seo
+      title={`Adventures${pageNumber}`}
+      description={description}
+      image={url}
+    />
   )
 }

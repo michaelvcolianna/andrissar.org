@@ -1,21 +1,12 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
 
+import Seo from '@components/seo'
 import Layout from '@components/layout'
 import HeroImage from '@components/hero-image'
 import RichText from '@components/rich-text'
 
-const adventureLink = (adventure) => {
-  let parts = [
-    'adventures',
-    adventure.year,
-    adventure.month,
-    adventure.day,
-    adventure.slug
-  ]
-
-  return `/${parts.join('/')}`
-}
+import adventureLink from '@utils/adventure-link'
 
 const AdventurePage = ({
   data: {
@@ -83,11 +74,6 @@ const AdventurePage = ({
 
 export const query = graphql`
   query ($slug: String!, $previous: String, $next: String) {
-    site {
-      siteMetadata {
-        siteUrl
-      }
-    }
     node: contentfulAdventure(slug: {eq: $slug}) {
       contentful_id
       slug
@@ -149,8 +135,27 @@ export const query = graphql`
 
 export default AdventurePage
 
-export const Head = ({ data }) => {
-  return (
-    <title>adventure name</title>
-  )
+export const Head = ({
+  data: {
+    node: {
+      slug,
+      title,
+      description: {
+        description
+      },
+      card: {
+        url
+      },
+      year,
+      month,
+      day
+    }
+  }
+}) => {
+  return <Seo
+    title={title}
+    description={description}
+    url={`/adventures/${year}/${month}/${day}/${slug}`}
+    image={url}
+  />
 }

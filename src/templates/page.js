@@ -1,6 +1,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 
+import Seo from '@components/seo'
 import Layout from '@components/layout'
 import HeroImage from '@components/hero-image'
 import RichText from '@components/rich-text'
@@ -34,13 +35,9 @@ const SimplePage = ({
 
 export const query = graphql`
   query ($slug: String) {
-    site {
-      siteMetadata {
-        siteUrl
-      }
-    }
     contentfulPage(slug: {eq: $slug}) {
       contentful_id
+      isHome
       slug
       title
       description {
@@ -79,8 +76,25 @@ export const query = graphql`
 
 export default SimplePage
 
-export const Head = ({ data }) => {
-  return (
-    <title>page name</title>
-  )
+export const Head = ({
+  data: {
+    contentfulPage: {
+      isHome,
+      slug,
+      title,
+      description: {
+        description
+      },
+      card: {
+        url
+      }
+    }
+  }
+}) => {
+  return <Seo
+    title={isHome ? null : title}
+    description={description}
+    url={isHome ? null : `/${slug}`}
+    image={url}
+  />
 }
