@@ -131,6 +131,14 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     })
   })
 
+  actions.createPage({
+    path: `/`,
+    component: path.resolve('./src/templates/page.js'),
+    context: {
+      slug: 'home'
+    }
+  })
+
   const pages = await graphql(`
     {
       allContentfulPage(filter: {

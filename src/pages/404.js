@@ -1,9 +1,13 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 
+import Layout from '@components/layout'
+
 const NotFoundPage = ({ data }) => {
   return (
-    <pre>{JSON.stringify(data, null, 2)}</pre>
+    <Layout>
+      <pre>{JSON.stringify(data, null, 2)}</pre>
+    </Layout>
   )
 }
 

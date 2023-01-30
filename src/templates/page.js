@@ -1,9 +1,34 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 
-const SimplePage = ({ data }) => {
+import Layout from '@components/layout'
+import HeroImage from '@components/hero-image'
+import RichText from '@components/rich-text'
+
+const SimplePage = ({
+  data: {
+    contentfulPage: {
+      title,
+      description: {
+        description
+      },
+      hero,
+      content
+    }
+  }
+}) => {
   return (
-    <pre>{JSON.stringify(data, null, 2)}</pre>
+    <Layout>
+      <HeroImage data={hero} />
+
+      <article id="content">
+        <h1>{title}</h1>
+
+        <p>{description}</p>
+
+        <RichText content={content} />
+      </article>
+    </Layout>
   )
 }
 
@@ -16,7 +41,6 @@ export const query = graphql`
     }
     contentfulPage(slug: {eq: $slug}) {
       contentful_id
-      isAdventures
       slug
       title
       description {
@@ -38,12 +62,14 @@ export const query = graphql`
         raw
         references {
           ... on ContentfulAsset {
+            __typename
             contentful_id
             height
             width
             title
             description
             gatsbyImageData(placeholder: BLURRED)
+            url
           }
         }
       }
