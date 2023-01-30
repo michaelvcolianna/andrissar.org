@@ -22,7 +22,7 @@ module.exports = {
   siteMetadata: {
     perPage: parseInt(process.env.PER_PAGE) || 10,
     siteDescription: 'Dungeons & Dragons campaign website for Andrissar 719.',
-    siteImage: 'https://images.ctfassets.net/dcyhd6p2bsl4/2GbPMKPyfYwvMcJhA9vybh/f8f6483bd9cd5c11339637163cd1e394/island_by_ryky_d9qkwm9-min-card.jpg',
+    siteImage: `${siteUrl}/default-card.jpg`,
     siteUrl: siteUrl
   },
   plugins: [

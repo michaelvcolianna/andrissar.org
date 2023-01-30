@@ -7,7 +7,15 @@ const Seo = ({
   url = null,
   image = null
 }) => {
-  const defaults = useStaticQuery(graphql`
+  const {
+    site: {
+      siteMetadata: {
+        siteDescription,
+        siteImage,
+        siteUrl
+      }
+    }
+  } = useStaticQuery(graphql`
     {
       site {
         siteMetadata {
@@ -19,17 +27,18 @@ const Seo = ({
     }
   `)
 
-  const seoDescription = description ?? defaults.site.siteMetadata.siteDescription
-  const seoImage = image ?? defaults.site.siteMetadata.siteImage
+  const seoDescription = description ?? siteDescription
+  const seoImage = image ?? siteImage
   const seoTitle = title
     ? `${title} - Andrissar 719`
     : 'Andrissar 719 - A 5E D&D Campaign'
   const seoUrl = url
-    ? `${defaults.site.siteMetadata.siteUrl}${url}`
-    : defaults.site.siteMetadata.siteUrl
+    ? `${siteUrl}${url}`
+    : siteUrl
 
   return (
     <>
+      <html lang="en" />
       <title>{seoTitle}</title>
       <meta name="title" content={seoTitle} />
       <meta property="og:title" content={seoTitle} />
