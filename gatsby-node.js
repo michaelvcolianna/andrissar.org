@@ -126,8 +126,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       component: path.resolve('./src/templates/adventure.js'),
       context: {
         slug: edge.node.slug,
-        previous: edge.previous?.slug,
-        next: edge.next?.slug
+        previous: edge.previous?.slug || null,
+        next: edge.next?.slug || null
       }
     })
   })
