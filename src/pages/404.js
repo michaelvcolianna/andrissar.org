@@ -3,7 +3,7 @@ import React from 'react'
 import Seo from '@components/seo'
 import Layout from '@components/layout'
 
-const NotFoundPage = ({ location, params, data, pageContext }) => {
+const NotFoundPage = ({ location }) => {
   return (
     <Layout>
       <h1>Not found</h1>

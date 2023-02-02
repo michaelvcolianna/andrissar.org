@@ -1,7 +1,19 @@
 :root {
-  --fake-var: 0;
+  // @Defaults
+  --base-transition: 300ms ease-in-out;
+
+  // @SkipLink
+  --transition-skip-link: none;
+
+  // @Motion
+  @media (prefers-reduced-motion: no-preference) {
+    // @Motion:SkipLink
+    --transition-skip-link: opacity var(--base-transition),
+                            top var(--base-transition);
+  }
 }
 
 body {
   font-family: 'Helvetica', sans-serif;
+  margin: 0;
 }

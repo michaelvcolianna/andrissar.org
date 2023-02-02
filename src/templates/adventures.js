@@ -49,6 +49,7 @@ const AdventuresPage = ({
               <li key={`adventure-${adventure.contentful_id}`}>
                 <Link to={adventureLink(adventure)}>
                   <span>{adventure.title}</span>
+
                   <time dateTime={adventure.date}>
                     {adventure.niceDay} {adventure.niceMonth}
                   </time>
@@ -59,9 +60,7 @@ const AdventuresPage = ({
         </section>
       ))}
 
-      {allContentfulAdventure.pageInfo.pageCount > 1 && (
-        <Pagination paginator={allContentfulAdventure.pageInfo} />
-      )}
+      {allContentfulAdventure.pageInfo.pageCount > 1 && <Pagination paginator={allContentfulAdventure.pageInfo} />}
     </Layout>
   )
 }

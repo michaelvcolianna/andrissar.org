@@ -3,14 +3,16 @@ import { GatsbyImage } from 'gatsby-plugin-image'
 import { INLINES, BLOCKS, MARKS } from '@contentful/rich-text-types'
 import { renderRichText } from 'gatsby-source-contentful/rich-text'
 
+import LinkResolver from '@components/link-resolver'
+
 const options = {
   renderMark: {
     [MARKS.BOLD]: (text) => <strong>{text}</strong>,
     [MARKS.ITALIC]: (text) => <em>{text}</em>
   },
   renderNode: {
-    [INLINES.ASSET_HYPERLINK]: (node, children) => <a href={node.data.target.url}>{children}</a>,
-    [INLINES.HYPERLINK]: (node, children) => <a href={node.data.uri}>{children}</a>,
+    [INLINES.ASSET_HYPERLINK]: (node, children) => <a href={node.data.target.url} target="_blank" rel="noreferrer" aria-labelledby="label-image">{children}</a>,
+    [INLINES.HYPERLINK]: (node, children) => <LinkResolver href={node.data.uri}>{children}</LinkResolver>,
     [BLOCKS.EMBEDDED_ASSET]: (node) => {
       const {
         height,
