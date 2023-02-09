@@ -9,6 +9,7 @@ import Pagination from '@components/pagination'
 import adventureLink from '@utils/adventure-link'
 
 const AdventuresPage = ({
+  uri,
   data: {
     contentfulPage: {
       title,
@@ -31,34 +32,40 @@ const AdventuresPage = ({
   })
 
   return (
-    <Layout>
+    <Layout uri={uri}>
       <HeroImage data={hero} />
 
-      <article id="content">
-        <h1>{title}</h1>
+      <div className="section-inner">
+        <header className="page-header">
+          <h1 className="entry-title">{title}</h1>
+          <p className="excerpt">{description}</p>
+        </header>
 
-        <p>{description}</p>
-      </article>
-
-      {adventuresByYear.map(year => (
-        <section key={`year-${year[0]}`}>
-          <h3>{year[0]}</h3>
-
-          <ul>
-            {year[1].map(adventure => (
-              <li key={`adventure-${adventure.contentful_id}`}>
-                <Link to={adventureLink(adventure)}>
-                  <span>{adventure.title}</span>
-
-                  <time dateTime={adventure.date}>
-                    {adventure.niceDay} {adventure.niceMonth}
-                  </time>
-                </Link>
+        <div className="posts" id="posts">
+          {adventuresByYear.map(year => (
+            <ul key={`year-${year[0]}`}>
+              <li>
+                <h3 className="list-title">{year[0]}</h3>
               </li>
-            ))}
-          </ul>
-        </section>
-      ))}
+
+              {year[1].map(adventure => (
+                <li
+                  className="post-preview type-post"
+                  key={`adventure-${adventure.contentful_id}`}
+                >
+                  <Link to={adventureLink(adventure)}>
+                    <h2 className="title">{adventure.title}</h2>
+
+                    <time dateTime={adventure.date}>
+                      {adventure.niceDay} {adventure.niceMonth}
+                    </time>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          ))}
+        </div>
+      </div>
 
       {allContentfulAdventure.pageInfo.pageCount > 1 && <Pagination paginator={allContentfulAdventure.pageInfo} />}
     </Layout>
@@ -84,7 +91,10 @@ export const query = graphql`
         width
         title
         description
-        gatsbyImageData(placeholder: BLURRED)
+        gatsbyImageData(
+          layout: FULL_WIDTH,
+          placeholder: BLURRED
+        )
       }
     }
     allContentfulAdventure(

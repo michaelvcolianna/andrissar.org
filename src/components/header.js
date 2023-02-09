@@ -1,25 +1,97 @@
 import React from 'react'
+import { Link } from 'gatsby'
 
-import LinkResolver from '@components/link-resolver'
 
-import * as style from './header.module.scss'
+const Header = ({ uri }) => {
+  const current = (path) => {
+    return path === uri || (path !== '/' && uri.startsWith(path))
+      ? 'current-menu-item'
+      : null
+  }
 
-const Header = () => {
+  const NavLinks = () => {
+    return (
+      <>
+        <li className={`menu-item ${current('/')}`}>
+          <Link to="/">Home</Link>
+        </li>
+
+        <li className={`menu-item ${current('/background')}`}>
+          <Link to="/background">Background</Link>
+
+          <ul className="sub-menu">
+            <li className={`menu-item ${current('/background')}`}>
+              <Link to="/background#1145">1145</Link>
+            </li>
+
+            <li className={`menu-item ${current('/background')}`}>
+              <Link to="/background#1468">1468</Link>
+            </li>
+
+            <li className={`menu-item ${current('/background')}`}>
+              <Link to="/background#1824">1824</Link>
+            </li>
+          </ul>
+        </li>
+
+        <li className={`menu-item ${current('/house-rules')}`}>
+          <Link to="/house-rules">House Rules</Link>
+        </li>
+
+        <li className={`menu-item ${current('/maps')}`}>
+          <Link to="/maps">Maps</Link>
+
+          <ul className="sub-menu">
+            <li className={`menu-item ${current('/maps')}`}>
+              <Link to="/maps#current">Current</Link>
+            </li>
+
+            <li className={`menu-item ${current('/maps')}`}>
+              <Link to="/maps#older">Older</Link>
+            </li>
+          </ul>
+        </li>
+
+        <li className={`menu-item ${current('/characters')}`}>
+          <Link to="/characters">Characters</Link>
+        </li>
+
+        <li className={`menu-item ${current('/adventures')}`}>
+          <Link to="/adventures">Adventures</Link>
+        </li>
+      </>
+    )
+  }
+
   return (
-    <header className={style.siteHeader}>
-      <span>Andrissar 719</span>
+    <>
+      <header className="site-header group">
+        <h1 className="site-title">
+          <Link to="/" className="site-name">Andrissar 719</Link>
+        </h1>
 
-      <nav aria-label="Site pages">
-        <ul>
-          <li><LinkResolver href="/">Home</LinkResolver></li>
-          <li><LinkResolver href="/background">Background</LinkResolver></li>
-          <li><LinkResolver href="/house-rules">House Rules</LinkResolver></li>
-          <li><LinkResolver href="/maps">Maps</LinkResolver></li>
-          <li><LinkResolver href="/characters">Characters</LinkResolver></li>
-          <li><LinkResolver href="/adventures">Adventures</LinkResolver></li>
+        <div className="site-description">
+          A 5E D&amp;D Campaign
+        </div>
+
+        <div className="nav-toggle">
+          <div className="bar"></div>
+          <div className="bar"></div>
+        </div>
+
+        <div className="menu-wrapper">
+          <ul className="main-menu desktop">
+            <NavLinks />
+          </ul>
+        </div>
+      </header>
+
+      <div className="mobile-menu-wrapper">
+        <ul className="main-menu mobile">
+          <NavLinks />
         </ul>
-      </nav>
-    </header>
+      </div>
+    </>
   )
 }
 

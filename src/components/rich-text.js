@@ -5,6 +5,16 @@ import { renderRichText } from 'gatsby-source-contentful/rich-text'
 
 import LinkResolver from '@components/link-resolver'
 
+const slugify = string => string
+  .toString()
+  .normalize('NFD')
+  .replace(/[\u0300-\u036f]/g, '')
+  .toLowerCase()
+  .trim()
+  .replace(/\s+/g, '-')
+  .replace(/[^\w-]+/g, '')
+  .replace(/--+/g, '-')
+
 const options = {
   renderMark: {
     [MARKS.BOLD]: (text) => <strong>{text}</strong>,
@@ -13,6 +23,17 @@ const options = {
   renderNode: {
     [INLINES.ASSET_HYPERLINK]: (node, children) => <a href={node.data.target.url} target="_blank" rel="noreferrer" aria-labelledby="label-image">{children}</a>,
     [INLINES.HYPERLINK]: (node, children) => <LinkResolver href={node.data.uri}>{children}</LinkResolver>,
+    [BLOCKS.HEADING_2]: (node, children) => <h2 id={slugify(children)}>{children}</h2>,
+    [BLOCKS.TABLE]: (node, children) => {
+      return (
+        <div className="wp-block-table">
+          <table>
+            <tbody>{children}</tbody>
+          </table>
+        </div>
+      )
+    },
+    [BLOCKS.QUOTE]: (node, children) => <blockquote className="wp-block-quote">{children}</blockquote>,
     [BLOCKS.EMBEDDED_ASSET]: (node) => {
       const {
         height,
@@ -23,7 +44,7 @@ const options = {
       } = node.data.target
 
       return (
-        <figure>
+        <figure className="wp-block-image size-large">
           <GatsbyImage
             image={gatsbyImageData}
             alt={title}
@@ -31,7 +52,7 @@ const options = {
             width={width}
           />
 
-          <figcaption>{description}</figcaption>
+          <figcaption className="screen-reader-text">{description}</figcaption>
         </figure>
       )
     }

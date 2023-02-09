@@ -9,6 +9,7 @@ import RichText from '@components/rich-text'
 import adventureLink from '@utils/adventure-link'
 
 const AdventurePage = ({
+  uri,
   data: {
     node: {
       title,
@@ -26,48 +27,58 @@ const AdventurePage = ({
   }
 }) => {
   return (
-    <Layout>
-      <HeroImage data={hero} />
+    <Layout uri={uri}>
+      <article id="content" className="type-post">
+        <HeroImage data={hero} />
 
-      <Link to="/adventures">Back to Adventures</Link>
+        <header className="entry-header section-inner">
+          <Link to="/adventures" className="post-list-return">
+            Back to Adventures
+          </Link>
 
-      <article id="content">
-        <h1>{title}</h1>
+          <h1 className="entry-title">{title}</h1>
 
-        <p>{description}</p>
+          <p className="excerpt">{description}</p>
 
-        <time dateTime={date}>{niceDate}</time>
+          <div className="meta">
+            <time dateTime={date}>{niceDate}</time>
+          </div>
+        </header>
 
-        <aside>
-          <h3>Characters:</h3>
+        <div className="entry-content section-inner">
+          <aside>
+            <p><strong>Characters:</strong></p>
 
-          <ul>
-            {characters.map((character, i) => (
-              <li key={`character-${i}`}>
-                {character}
-              </li>
-            ))}
-          </ul>
-        </aside>
+            <ul>
+              {characters.map((character, i) => (
+                <li key={`character-${i}`}>
+                  {character}
+                </li>
+              ))}
+            </ul>
+          </aside>
 
-        <RichText content={content} />
+          <RichText content={content} />
+        </div>
+
+        <div className="post-pagination section-inner">
+          <div className="previous-post">
+            {previous && (
+              <Link to={adventureLink(previous)}>
+                <span>{previous.title}</span>
+              </Link>
+            )}
+          </div>
+
+          <div className="next-post">
+            {next && (
+              <Link to={adventureLink(next)}>
+                <span>{next.title}</span>
+              </Link>
+            )}
+          </div>
+        </div>
       </article>
-
-      <nav id="adventure-nav" aria-label="Adjacent posts">
-        <ul>
-          {next && (
-            <li>
-              <Link to={adventureLink(next)}>{next.title}</Link>
-            </li>
-          )}
-
-          {previous && (
-            <li>
-              <Link to={adventureLink(previous)}>{previous.title}</Link>
-            </li>
-          )}
-        </ul>
-      </nav>
     </Layout>
   )
 }
@@ -96,7 +107,10 @@ export const query = graphql`
         width
         title
         description
-        gatsbyImageData(placeholder: BLURRED)
+        gatsbyImageData(
+          layout: FULL_WIDTH,
+          placeholder: BLURRED
+        )
       }
       characters
       content {
@@ -114,7 +128,7 @@ export const query = graphql`
         }
       }
     }
-    previous: contentfulAdventure(slug: {eq: $previous}) {
+    next: contentfulAdventure(slug: {eq: $previous}) {
       contentful_id
       slug
       title
@@ -122,7 +136,7 @@ export const query = graphql`
       month: date(formatString: "MM")
       day: date(formatString: "DD")
     }
-    next: contentfulAdventure(slug: {eq: $next}) {
+    previous: contentfulAdventure(slug: {eq: $next}) {
       contentful_id
       slug
       title

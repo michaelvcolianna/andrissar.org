@@ -7,6 +7,7 @@ import HeroImage from '@components/hero-image'
 import RichText from '@components/rich-text'
 
 const SimplePage = ({
+  uri,
   data: {
     contentfulPage: {
       title,
@@ -19,15 +20,19 @@ const SimplePage = ({
   }
 }) => {
   return (
-    <Layout>
-      <HeroImage data={hero} />
-
+    <Layout uri={uri}>
       <article id="content">
-        <h1>{title}</h1>
+        <HeroImage data={hero} />
 
-        <p>{description}</p>
+        <header className="entry-header section-inner">
+          <h1 className="entry-title">{title}</h1>
 
-        <RichText content={content} />
+          <p className="excerpt">{description}</p>
+        </header>
+
+        <div className="entry-content section-inner">
+          <RichText content={content} />
+        </div>
       </article>
     </Layout>
   )
@@ -53,7 +58,10 @@ export const query = graphql`
         width
         title
         description
-        gatsbyImageData(placeholder: BLURRED)
+        gatsbyImageData(
+          layout: FULL_WIDTH,
+          placeholder: BLURRED
+        )
       }
       content {
         raw

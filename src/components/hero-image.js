@@ -11,15 +11,16 @@ const HeroImage = ({
   }
 }) => {
   return (
-    <figure>
+    <figure className="featured-image">
       <GatsbyImage
         image={gatsbyImageData}
         alt={title}
         height={height}
         width={width}
+        layout="fullWidth"
       />
 
-      <figcaption>{description}</figcaption>
+      <figcaption className="screen-reader-text">{description}</figcaption>
     </figure>
   )
 }

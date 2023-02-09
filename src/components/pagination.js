@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'gatsby'
 
 const Pagination = ({ paginator }) => {
   const nextUrl = () => `/adventures/page/${paginator.currentPage + 1}`
@@ -7,25 +8,23 @@ const Pagination = ({ paginator }) => {
     : `/adventures/page/${paginator.currentPage - 1}`
 
   return (
-    <nav id="adventures-nav" aria-label="Pages of adventures">
-      <ul>
-        {paginator.hasNextPage && (
-          <li>
-            <a href={nextUrl()}>View next {paginator.perPage}</a>
-          </li>
-        )}
+    <div className="archive-pagination section-inner group">
+      {paginator.hasPreviousPage && (
+        <div className="previous-posts-link">
+          <h4 className="title">
+            <Link to={previousUrl()}>Newer</Link>
+          </h4>
+        </div>
+      )}
 
-        <li>
-          <span>Page {paginator.currentPage} of {paginator.pageCount}</span>
-        </li>
-
-        {paginator.hasPreviousPage && (
-          <li>
-            <a href={previousUrl()}>View previous {paginator.perPage}</a>
-          </li>
-        )}
-      </ul>
-    </nav>
+      {paginator.hasNextPage && (
+        <div className="next-posts-link">
+          <h4 className="title">
+            <Link to={nextUrl()}>Older</Link>
+          </h4>
+        </div>
+      )}
+    </div>
   )
 }
 
