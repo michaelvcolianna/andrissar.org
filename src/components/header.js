@@ -2,12 +2,6 @@ import React, { useState, useEffect, useRef } from 'react'
 import { Link } from 'gatsby'
 
 const Header = ({ location }) => {
-  // Handle the body classes
-  function toggleBody() {
-    document.body.classList.toggle('mobile-menu-visible')
-    document.body.classList.toggle('lock-scroll')
-  }
-
   // Up front vars & refs
   const [navOpen, setNavOpen] = useState(false)
   const menuNode = useRef()
@@ -16,7 +10,8 @@ const Header = ({ location }) => {
   // Handler for the menu button
   const toggleMenu = () => {
     setNavOpen(prev => !prev)
-    toggleBody()
+    document.body.classList.toggle('mobile-menu-visible')
+    document.body.classList.toggle('lock-scroll')
   }
 
   // Escape key handler
@@ -24,7 +19,8 @@ const Header = ({ location }) => {
     const keyDownHandler = event => {
       if(event.key === 'Escape' && navOpen) {
         setNavOpen(false)
-        toggleBody()
+        document.body.classList.remove('mobile-menu-visible')
+        document.body.classList.remove('lock-scroll')
       }
     }
 
@@ -38,9 +34,10 @@ const Header = ({ location }) => {
   // Window resize handler
   useEffect(() => {
     const windowResizeHandler = () => {
-      if(window.innerWidth > 100) {
+      if(window.innerWidth > 1000) {
         setNavOpen(false)
-        toggleBody()
+        document.body.classList.remove('mobile-menu-visible')
+        document.body.classList.remove('lock-scroll')
       }
     }
 
