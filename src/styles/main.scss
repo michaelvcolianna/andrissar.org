@@ -431,7 +431,7 @@ input[type="submit"] {
   padding: 14px 22px 14px;
 }
 
-button:hover,
+button:not(.nav-toggle):hover,
 .button:hover,
 input[type="button"]:hover,
 input[type="submit"]:hover {
@@ -674,7 +674,6 @@ figure {
 /* -------------------------------------------------------------------------------- */
 /*	5.	Site Navigation
 /* -------------------------------------------------------------------------------- */
-
 
 .mobile-menu-wrapper,
 .mobile-search {
@@ -2189,8 +2188,10 @@ input.search-field::-moz-placeholder { color: #121212; }
   .same-custom-bgs .site-header,
   .white-bg .site-header {
     border: none;
-    border-bottom: 1px solid rgba( 0, 0, 4, 0.075 );
     transition: border-color .3s linear;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: rgba( 0, 0, 4, 0.075 );
   }
 
   body.mobile-menu-visible .same-custom-bgs .site-header,
@@ -2213,12 +2214,16 @@ input.search-field::-moz-placeholder { color: #121212; }
   .mobile-menu-wrapper {
     background: #121212;
     color: #fff;
+    display: block;
     overflow: auto;
     padding: 112px 7.5% 0 7.5%;
     position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
+    opacity: 0;
+    transform: translateX(-100vw);
+    transition: transform 0.05s linear, opacity 0.15s linear;
     top: 0;
     z-index: 10000;
   }
@@ -2261,6 +2266,11 @@ input.search-field::-moz-placeholder { color: #121212; }
   .dark .main-menu .toggle-mobile-search:before {
     background-image: url( /assets/images/spyglass-semiopaque.svg );
     zoom: 1;
+  }
+
+  .mobile-menu-wrapper.visible {
+    opacity: 1;
+    transform: translateX(0);
   }
 
   .mobile-menu-wrapper.visible .main-menu {

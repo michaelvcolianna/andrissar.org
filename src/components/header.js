@@ -1,8 +1,56 @@
-import React from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { Link } from 'gatsby'
 
-
 const Header = ({ location }) => {
+  // Handle the body classes
+  function toggleBody() {
+    document.body.classList.toggle('mobile-menu-visible')
+    document.body.classList.toggle('lock-scroll')
+  }
+
+  // Up front vars & refs
+  const [navOpen, setNavOpen] = useState(false)
+  const menuNode = useRef()
+  const menuToggle = useRef()
+
+  // Handler for the menu button
+  const toggleMenu = () => {
+    setNavOpen(prev => !prev)
+    toggleBody()
+  }
+
+  // Escape key handler
+  useEffect(() => {
+    const keyDownHandler = event => {
+      if(event.key === 'Escape' && navOpen) {
+        setNavOpen(false)
+        toggleBody()
+      }
+    }
+
+    document.addEventListener('keydown', keyDownHandler)
+
+    return() => {
+      document.removeEventListener('keydown', keyDownHandler)
+    }
+  }, [navOpen])
+
+  // Window resize handler
+  useEffect(() => {
+    const windowResizeHandler = () => {
+      if(window.innerWidth > 100) {
+        setNavOpen(false)
+        toggleBody()
+      }
+    }
+
+    window.addEventListener('resize', windowResizeHandler)
+
+    return() => {
+      window.removeEventListener('resize', windowResizeHandler)
+    }
+  }, [navOpen])
+
   const current = (path) => {
     let uri = '/'
 
@@ -80,10 +128,14 @@ const Header = ({ location }) => {
           A 5E D&amp;D Campaign
         </div>
 
-        <div className="nav-toggle">
+        <button
+          className={`nav-toggle ${navOpen ? 'active' : ''}`}
+          onClick={toggleMenu}
+          ref={menuToggle}
+        >
           <div className="bar"></div>
           <div className="bar"></div>
-        </div>
+        </button>
 
         <div className="menu-wrapper">
           <ul className="main-menu desktop">
@@ -92,7 +144,10 @@ const Header = ({ location }) => {
         </div>
       </header>
 
-      <div className="mobile-menu-wrapper">
+      <div
+        className={`mobile-menu-wrapper ${navOpen ? 'visible' : ''}`}
+        ref={menuNode}
+      >
         <ul className="main-menu mobile">
           <NavLinks />
         </ul>
