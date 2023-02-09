@@ -63,20 +63,6 @@ const Header = ({ location }) => {
 
         <li className={`menu-item ${current('/background')}`}>
           <Link to="/background">Background</Link>
-
-          <ul className="sub-menu">
-            <li className={`menu-item ${current('/background')}`}>
-              <Link to="/background#1145">1145</Link>
-            </li>
-
-            <li className={`menu-item ${current('/background')}`}>
-              <Link to="/background#1468">1468</Link>
-            </li>
-
-            <li className={`menu-item ${current('/background')}`}>
-              <Link to="/background#1824">1824</Link>
-            </li>
-          </ul>
         </li>
 
         <li className={`menu-item ${current('/house-rules')}`}>
@@ -85,16 +71,6 @@ const Header = ({ location }) => {
 
         <li className={`menu-item ${current('/maps')}`}>
           <Link to="/maps">Maps</Link>
-
-          <ul className="sub-menu">
-            <li className={`menu-item ${current('/maps')}`}>
-              <Link to="/maps#current">Current</Link>
-            </li>
-
-            <li className={`menu-item ${current('/maps')}`}>
-              <Link to="/maps#older">Older</Link>
-            </li>
-          </ul>
         </li>
 
         <li className={`menu-item ${current('/characters')}`}>
