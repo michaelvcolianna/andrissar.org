@@ -10,8 +10,6 @@ const Header = ({ location }) => {
   // Handler for the menu button
   const toggleMenu = () => {
     setNavOpen(prev => !prev)
-    document.body.classList.toggle('mobile-menu-visible')
-    document.body.classList.toggle('lock-scroll')
   }
 
   // Escape key handler
@@ -19,8 +17,6 @@ const Header = ({ location }) => {
     const keyDownHandler = event => {
       if(event.key === 'Escape' && navOpen) {
         setNavOpen(false)
-        document.body.classList.remove('mobile-menu-visible')
-        document.body.classList.remove('lock-scroll')
       }
     }
 
@@ -36,8 +32,6 @@ const Header = ({ location }) => {
     const windowResizeHandler = () => {
       if(window.innerWidth > 1000) {
         setNavOpen(false)
-        document.body.classList.remove('mobile-menu-visible')
-        document.body.classList.remove('lock-scroll')
       }
     }
 
