@@ -9,7 +9,7 @@ import RichText from '@components/rich-text'
 import adventureLink from '@utils/adventure-link'
 
 const AdventurePage = ({
-  uri,
+  location,
   data: {
     node: {
       title,
@@ -27,7 +27,7 @@ const AdventurePage = ({
   }
 }) => {
   return (
-    <Layout uri={uri}>
+    <Layout location={location}>
       <article id="content" className="type-post">
         <HeroImage data={hero} />
 

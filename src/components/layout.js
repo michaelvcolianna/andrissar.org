@@ -7,15 +7,12 @@ import SkipLink from '@components/skip-link'
 
 import '@styles/main.scss'
 
-const Layout = ({
-  uri,
-  children
-}) => {
+const Layout = ({ location, children }) => {
   return (
     <>
       <SkipLink />
 
-      <Header uri={uri} />
+      <Header location={location} />
 
       <main className="site-content" id="site-content">
         {children}

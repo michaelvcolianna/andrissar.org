@@ -2,8 +2,14 @@ import React from 'react'
 import { Link } from 'gatsby'
 
 
-const Header = ({ uri }) => {
+const Header = ({ location }) => {
   const current = (path) => {
+    let uri = '/'
+
+    if(location && location.pathname !== '/') {
+      uri = location.pathname.replace(/\/$/, '')
+    }
+
     return path === uri || (path !== '/' && uri.startsWith(path))
       ? 'current-menu-item'
       : null

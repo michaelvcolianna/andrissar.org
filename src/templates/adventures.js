@@ -9,7 +9,7 @@ import Pagination from '@components/pagination'
 import adventureLink from '@utils/adventure-link'
 
 const AdventuresPage = ({
-  uri,
+  location,
   data: {
     contentfulPage: {
       title,
@@ -32,7 +32,7 @@ const AdventuresPage = ({
   })
 
   return (
-    <Layout uri={uri}>
+    <Layout location={location}>
       <HeroImage data={hero} />
 
       <div className="section-inner">

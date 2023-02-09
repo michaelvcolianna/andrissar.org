@@ -7,7 +7,7 @@ import HeroImage from '@components/hero-image'
 import RichText from '@components/rich-text'
 
 const SimplePage = ({
-  uri,
+  location,
   data: {
     contentfulPage: {
       title,
@@ -20,7 +20,7 @@ const SimplePage = ({
   }
 }) => {
   return (
-    <Layout uri={uri}>
+    <Layout location={location}>
       <article id="content">
         <HeroImage data={hero} />
 
