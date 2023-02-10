@@ -1,0 +1,234 @@
+.entry-content {
+  position: relative;
+  word-break: break-word;
+}
+
+.entry-content a {
+  border-bottom: 1px solid #000;
+  text-decoration: none;
+}
+
+.entry-content a:hover {
+  border-bottom-color: rgba( 0, 0, 0, .25 );
+}
+
+hr {
+  border: none;
+  border-top: 1px solid rgba( 0, 0, 0, 0.13 );
+  margin: 50px auto;
+  width: 50%;
+}
+
+hr.is-style-wide,
+hr.is-style-dots {
+  width: 100%;
+}
+
+address {
+  background: #f1f1f5;
+  line-height: 1.5;
+  margin-bottom: 20px;
+  padding: 20px 22px;
+}
+
+.entry-content > *:first-child { margin-top: 0; }
+.entry-content > *:last-child { margin-bottom: 0; }
+
+.entry-content p {
+  line-height: 1.6;
+  margin-bottom: 25px;
+}
+
+.entry-content td p,
+.entry-content li p {
+  margin-bottom: 0;
+}
+
+.entry-content p.has-background {
+  padding: 20px;
+}
+
+.entry-content h1 + h1, .entry-content h1 + h2, .entry-content h1 + h3, .entry-content h1 + h4, .entry-content h1 + h5, .entry-content h1 + h6,
+.entry-content h2 + h1, .entry-content h2 + h2, .entry-content h2 + h3, .entry-content h2 + h4, .entry-content h2 + h5, .entry-content h2 + h6,
+.entry-content h3 + h1, .entry-content h3 + h2, .entry-content h3 + h3, .entry-content h3 + h4, .entry-content h3 + h5, .entry-content h3 + h6,
+.entry-content h4 + h1, .entry-content h4 + h2, .entry-content h4 + h3, .entry-content h4 + h4, .entry-content h4 + h5, .entry-content h4 + h6,
+.entry-content h5 + h1, .entry-content h5 + h2, .entry-content h5 + h3, .entry-content h5 + h4, .entry-content h5 + h5, .entry-content h5 + h6,
+.entry-content h6 + h1, .entry-content h6 + h2, .entry-content h6 + h3, .entry-content h6 + h4, .entry-content h6 + h5, .entry-content h6 + h6 {
+  margin-top: 30px;
+}
+
+.entry-content > ol,
+.entry-content > ul {
+  margin-bottom: 30px;
+}
+
+p.has-drop-cap:not(:focus):first-letter {
+  font-size: 7.5em;
+  margin: .1em .05em 0 -.075em;
+}
+
+/* Pull Quotes ------------------------------- */
+
+.entry-content .pull {
+  font-size: 29px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  width: 280px;
+}
+
+.entry-content .pull.left {
+  float: left;
+  hanging-punctuation: first;
+  margin: 2px 25px 20px -80px;
+}
+
+.entry-content .pull.right {
+  float: right;
+  hanging-punctuation: last;
+  margin: 2px -80px 25px 20px;
+  text-align: right;
+}
+
+/* Alignment Classes ------------------------- */
+
+.entry-content .alignnone,
+.entry-content .aligncenter {
+  margin: 30px auto;
+}
+
+.entry-content .alignwide,
+.entry-content .alignfull {
+  margin: 50px auto;
+}
+
+.entry-content .alignfull {
+  margin-left: calc( 50% - 50vw + 190px );
+  max-width: calc( 100vw - 380px );
+  width: calc( 100vw - 380px );
+}
+
+.entry-content .wp-block-image.alignfull figcaption {
+  padding: 0 5%;
+}
+
+.entry-content .alignwide {
+  margin-left: calc( 50% - 430px );
+  max-width: 860px;
+  width: 860px;
+}
+
+.alignleft,
+.alignright {
+  margin-bottom: 20px;
+  max-width: 40%;
+}
+
+.alignleft {
+  float: left;
+  margin: 5px 40px 30px -80px;
+}
+
+.alignright {
+  float: right;
+  margin: 5px -80px 30px 40px;
+}
+
+.alignnone {
+  margin-left: -80px;
+  margin-right: -80px;
+  max-width: calc( 100% + 160px );
+}
+
+.alignnone img {
+  width: 100%;
+}
+
+/* VANILLA GALLERIES */
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 50px 0 30px;
+  padding: 0;
+  position: relative;
+  left: calc( 50% - 50vw + 220px );
+  width: calc( 100vw - 440px );
+}
+
+@media ( min-width: 1920px ) {
+  .gallery {
+    left: calc( 50% - 730px );
+    width: 1460px;
+  }
+}
+
+.gallery + .gallery {
+  margin-top: -30px;
+}
+
+.gallery .gallery-item {
+  display: block;
+  float: left;
+  margin: 0 0 20px;
+  padding: 0 10px;
+  position: relative;
+  width: 100%;
+}
+
+.gallery-columns-1 .gallery-item { width: 100%; }
+.gallery-columns-2 .gallery-item { width: 50%; }
+.gallery-columns-3 .gallery-item { width: 33.3%; }
+.gallery-columns-4 .gallery-item { width: 25%; }
+.gallery-columns-5 .gallery-item { width: 20%; }
+.gallery-columns-6 .gallery-item { width: 16.6%; }
+.gallery-columns-7 .gallery-item { width: 14.28%; }
+.gallery-columns-8 .gallery-item { width: 12.5%; }
+.gallery-columns-9 .gallery-item { width: 11.1%; }
+
+.gallery .gallery-item a {
+  border: none;
+  display: block;
+  line-height: 0;
+  text-align: center;
+}
+
+.gallery img {
+  width: 100%;
+}
+
+.gallery-caption {
+  background: #fff;
+  color: #121212;
+  font-size: 12px;
+  line-height: 1.35;
+  margin: 0;
+  max-width: calc( 100% - 40px );
+  max-height: 50%;
+  overflow: hidden;
+  padding: 11px 14px 10px;
+  position: absolute;
+  bottom: 10px;
+  left: 20px;
+}
+
+.gallery-columns-1 .gallery-caption,
+.gallery-columns-2 .gallery-caption,
+.gallery-columns-3 .gallery-caption {
+  bottom: 40px;
+  font-size: 14px;
+  left: 50px;
+  max-width: calc( 100% - 100px );
+}
+
+.gallery-columns-3 .gallery-caption {
+  bottom: 30px;
+  left: 40px;
+  max-width: calc( 100% - 80px );
+}
+
+/* TILED GALLERIES */
+
+.entry-content .tiled-gallery {
+  margin: 50px auto 50px auto;
+}

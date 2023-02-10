@@ -1,0 +1,18 @@
+.post-list-return
+{
+  background: transparent url( /assets/images/arrow-black-left.svg ) no-repeat left center;
+  background-size: auto 12px;
+  border-bottom: 1px solid transparent;
+  color: #121212;
+  font-family: inherit;
+  font-size: 1em;
+  font-weight: 600;
+  padding: 0 0 0 25px;
+  text-decoration: none;
+  transition: border-color .15s linear;
+}
+
+.post-list-return:hover
+{
+  border-bottom-color: #121212;
+}

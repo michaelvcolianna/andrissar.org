@@ -1,0 +1,252 @@
+ol,
+ul {
+  margin-left: 40px;
+}
+
+li {
+  line-height: 1.5;
+  margin-top: 15px;
+}
+
+dd,
+dt {
+  line-height: 1.5;
+}
+
+dt {
+  font-weight: 700;
+}
+
+dd + dt {
+  margin-top: 15px;
+}
+
+code {
+  background: #f1f1f4;
+  padding: 0 1px;
+}
+
+pre {
+  background: #f1f1f4;
+  font-size: 14px;
+  line-height: 1.5;
+  padding: 20px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+/* Headings ---------------------------------- */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 600;
+  line-height: 1.2;
+  margin: 60px 0 30px;
+}
+
+h1 { font-size: 40px; }
+h2 { font-size: 32px; }
+h3 { font-size: 28px; }
+h4 { font-size: 24px; }
+h5 { font-size: 20px; }
+h6 { font-size: 18px; }
+
+/* Inputs ------------------------------------ */
+
+fieldset {
+  border: 1px solid rgba( 0, 0, 0, .2 );
+  padding: 25px;
+}
+
+fieldset legend {
+  font-size: 16px;
+  font-weight: 600;
+  margin-left: -15px;
+  padding: 0 15px;
+}
+
+label {
+  margin-bottom: 10px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="url"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="week"],
+input[type="number"],
+input[type="search"],
+input[type="tel"],
+input[type="color"],
+textarea {
+  appearance: none;
+  background: transparent;
+  border-radius: 0;
+  border: 1px solid rgba( 0, 0, 0, 0.2 );
+  box-shadow: none !important;
+  color: #121212;
+  display: block;
+  font-size: 1em;
+  margin: 0 0 15px 0;
+  padding: 15px;
+  transition: border-color .15s linear;
+  width: 100%;
+}
+
+textarea {
+  line-height: 1.4;
+  height: 200px;
+}
+
+button,
+.button,
+.wp-block-file__button,
+.wp-block-button__link,
+input[type="button"],
+input[type="submit"] {
+  appearance: none;
+  background: #121212;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  color: #fff;
+  display: inline-block;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 16px 24px 16px;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color .15s linear;
+}
+
+.is-style-outline > .wp-block-button__link,
+.wp-block-button__link.is-style-outline {
+  padding: 14px 22px 14px;
+}
+
+button:not(.nav-toggle):hover,
+.button:hover,
+input[type="button"]:hover,
+input[type="submit"]:hover {
+  background: #454545;
+  cursor: pointer;
+}
+
+/* Tables ------------------------------------ */
+
+.wp-block-table table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.wp-block-table td,
+.wp-block-table th {
+  border: 1px solid;
+  padding: 0.5em;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  empty-cells: show;
+  font-size: 0.9em;
+  margin-bottom: 30px;
+  max-width: 100%;
+  overflow: hidden;
+  width: 100%;
+}
+
+th,
+td {
+  line-height: 1.4;
+  margin: 0;
+  overflow: visible;
+  padding: 2.5%;
+}
+
+caption {
+  font-size: 13px;
+  font-weight: 700;
+  padding-bottom: 2.5%;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+thead {
+  vertical-align: bottom;
+  white-space: nowrap;
+}
+
+th {
+  font-weight: 600;
+}
+
+tbody > tr:nth-child(odd) {
+  background: rgba( 0, 0, 4, 0.05 );
+}
+
+/* Block Quotes ------------------------------ */
+
+blockquote {
+  border-color: currentColor;
+  border-style: solid;
+  border-width: 0 0 0 2px;
+  margin: 0 0 30px 0;
+  padding: 0 0 0 20px;
+}
+
+blockquote p {
+  font-weight: 700;
+  hanging-punctuation: first;
+}
+
+blockquote cite {
+  display: block;
+  font-style: normal;
+  margin: 1em 0 0;
+}
+
+blockquote cite:before {
+  content: '— ';
+}
+
+/* Media ------------------------------------- */
+
+figure {
+  margin: 0;
+}
+
+.wp-caption {
+  display: block;
+  max-width: 100%;
+}
+
+.gallery-caption,
+.wp-caption-text,
+:root figcaption {
+  font-size: 0.9em;
+  margin: 15px 0 0;
+}
+
+:root .gallery-caption,
+:root .wp-caption-text {
+  margin-bottom: 0;
+}
+
+.wp-caption-text {
+  color: rgba( 0, 0, 0, .5 );
+}
+
+.wp-caption-text a {
+  color: inherit;
+}

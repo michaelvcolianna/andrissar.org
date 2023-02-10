@@ -1,0 +1,42 @@
+/* Full Width Template ---------------------------- */
+
+
+.full-width-template main .section-inner {
+  max-width: 800px;
+}
+
+
+/* Resume Template ---------------------------- */
+
+.resume-template .entry-content {
+  max-width: 800px;
+  padding-left: 280px;
+}
+
+.resume-template .entry-content h1,
+.resume-template .entry-content h2,
+.resume-template .entry-content h3,
+.resume-template .entry-content h4,
+.resume-template .entry-content h5,
+.resume-template .entry-content h6 {
+  border-top: 1px solid rgba( 0, 0, 4, 0.125 );
+  font-size: 24px;
+  font-weight: 500;
+  margin: 60px 0 -28px -280px;
+  padding: 40px calc( 100% + 20px ) 0 0;
+}
+
+.resume-template .entry-content > h1:first-child,
+.resume-template .entry-content > h2:first-child,
+.resume-template .entry-content > h3:first-child,
+.resume-template .entry-content > h4:first-child,
+.resume-template .entry-content > h5:first-child,
+.resume-template .entry-content > h6:first-child {
+  margin-top: 0;
+}
+
+.resume-template .entry-content .alignnone {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
+}

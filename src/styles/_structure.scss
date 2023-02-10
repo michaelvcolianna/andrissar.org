@@ -1,0 +1,93 @@
+.site-content {
+  position: relative;
+}
+
+.section-inner {
+  margin: 0 auto;
+  max-width: 560px;
+  width: 85%;
+}
+
+.section-inner.wide {
+  max-width: 800px;
+}
+
+.section-inner .section-inner {
+  width: 100%;
+}
+
+
+/* Base Transitions ----------------------------- */
+
+a {
+  transition: all .15s linear;
+}
+
+
+/* Base Typography ----------------------------- */
+
+.entry-title {
+  font-size: 36px;
+  font-weight: 600;
+  letter-spacing: -.45px;
+  line-height: 1.25;
+  margin: 0;
+  word-break: break-word;
+}
+
+.excerpt {
+  font-size: 24px;
+  line-height: 1.45;
+}
+
+.excerpt a {
+  border-bottom: 1px solid #121212;
+  color: #121212;
+}
+
+.excerpt a:hover {
+  border-bottom-color: rgba( 0, 0, 4, 0.4 );
+  color: rgba( 0, 0, 4, 0.4 );
+  text-decoration: none;
+}
+
+/* Base Media -------------------------------- */
+
+.bg-image {
+  background: no-repeat center;
+  background-size: cover;
+}
+
+/* Animations -------------------------------- */
+
+@keyframes show {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hide {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes foldOutLeft {
+  from { transform: rotate(0); }
+  to { transform: rotate(30deg); }
+}
+
+@keyframes foldOutRight {
+  from { transform: rotate(0); }
+  to { transform: rotate(-30deg); }
+}

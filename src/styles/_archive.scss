@@ -1,0 +1,139 @@
+.page-header {
+  padding: 80px 0;
+}
+
+.page-header:last-child {
+  padding-bottom: 0;
+}
+
+.page-subtitle {
+  color: rgba( 0, 0, 4, 0.4 );
+  font-size: inherit;
+  font-weight: inherit;
+  margin: 0 0 10px 0;
+}
+
+.page-title {
+  font-size: 24px;
+  font-weight: inherit;
+  hanging-punctuation: first;
+  line-height: 1.45;
+  margin: 0;
+}
+
+.page-header p {
+  line-height: 1.5;
+  margin-top: 20px;
+}
+
+.page-header .search-form {
+  margin-top: 20px;
+}
+
+/* Post Wrappers ----------------------------- */
+
+.posts:first-child {
+  margin-top: 80px;
+}
+
+.posts ul {
+  list-style: none;
+  margin: 0;
+}
+
+.posts li {
+  margin: 0;
+}
+
+.posts > ul + ul {
+  margin-top: 70px;
+}
+
+.posts .list-title {
+  color: rgba( 0, 0, 4, 0.4 );
+  font-size: inherit;
+  font-weight: inherit;
+  margin: 0 0 17px 0;
+}
+
+/* Post Previews ----------------------------- */
+
+.post-preview {
+  border-top: 1px solid rgba( 0, 0, 4, .125 );
+  position: relative;
+}
+
+.post-preview a {
+  display: flex;
+  justify-content: space-between;
+  padding: 17px 0;
+  text-decoration: none;
+}
+
+.post-preview.no-title a {
+  justify-content: flex-end;
+}
+
+.post-preview a:hover {
+  text-decoration: none;
+}
+
+.sticky .sticky-arrow {
+  background:  url( /assets/images/arrow-black-right.svg ) no-repeat center;
+  background-size: auto 12px;
+  border-radius: 50%;
+  display: inline;
+  height: 12px;
+  position: absolute;
+  right: calc( 100% + 7px );
+  top: calc( 50% - 6px );
+  width: 20px;
+}
+
+.post-preview a .title {
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: 1.25;
+  margin: 0;
+  word-break: break-word;
+}
+
+.post-preview a .title span {
+  border-bottom: 1px solid transparent;
+  transition: border-color .2s linear;
+}
+
+.post-preview a:hover .title span {
+  border-bottom-color: #121212;
+}
+
+.post-preview time {
+  color: rgba( 0, 0, 4, 0.4 );
+  line-height: 1.25;
+  margin-left: 30px;
+  white-space: nowrap;
+}
+
+/* Archive Pagination ------------------------ */
+
+.archive-pagination {
+  margin-top: 100px;
+}
+
+.archive-pagination .previous-posts-link { float: left; }
+.archive-pagination .next-posts-link { float: right; }
+
+.archive-pagination a {
+  color: rgba( 0, 0, 0, .35 );
+  text-decoration: none;
+}
+
+.archive-pagination a:hover {
+  color: #121212;
+}
+
+.archive-pagination h4 {
+  font-size: inherit;
+  font-weight: inherit;
+  margin: 0;
+}

@@ -1,0 +1,35 @@
+.site-footer {
+  border-top: 1px solid rgba( 0, 0, 4, 0.125 );
+  display: flex;
+  font-size: 16px;
+  justify-content: space-between;
+  margin-top: 100px;
+  max-width: 800px;
+  padding: 25px 0 80px;
+  text-align: center;
+}
+
+.site-footer p {
+  line-height: 1;
+  text-align: left;
+}
+
+.site-footer .theme-by {
+  color: rgba( 0, 0, 4, 0.4 );
+  margin-left: 20px;
+  text-align: right;
+}
+
+.site-footer a {
+  border-bottom: 1px solid transparent;
+  text-decoration: none;
+}
+
+.site-footer .theme-by a {
+  color: inherit;
+}
+
+.site-footer a:hover {
+  border-bottom-color: currentColor;
+}
+
