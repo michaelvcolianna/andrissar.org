@@ -54,6 +54,7 @@ const Seo = ({
       <meta name="twitter:image" content={seoImage} />
       <meta property="og:type" content="website" />
       <meta name="twitter:card" content="summary_large_image" />
+      <meta name="robots" content="noai, noimageai" />
     </>
   )
 }
