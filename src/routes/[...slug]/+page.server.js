@@ -22,7 +22,7 @@ export async function load({ params }) {
   const response = await Storyblok.get(`cdn/stories/${parts || 'home'}`, {
     version
   }).catch((err) => {
-    error(404, `Couldn't find page: '${params.slug}'`);
+    error(404);
   });
 
   const {
@@ -89,7 +89,7 @@ export async function load({ params }) {
     const requestDate = rawParts.slice(1, -1).toString();
 
     if (adventureDate !== requestDate) {
-      error(404, `Couldn't find adventure: '${params.slug}'`);
+      error(404);
     }
 
     const adventureIndex = adventures.findIndex(

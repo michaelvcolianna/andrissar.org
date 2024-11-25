@@ -11,9 +11,9 @@
   ];
 
   const current = (href) =>
-    (href === '/' && !$page.params.slug) ||
-    href === `/${$page.params.slug}` ||
-    (href === '/adventures' && $page.params.slug.startsWith('adventures/'));
+    ($page.route?.id !== '/404' && href === '/' && !$page.params?.slug) ||
+    href === `/${$page.params?.slug}` ||
+    (href === '/adventures' && $page.params?.slug?.startsWith('adventures/'));
 </script>
 
 {#each links as link}
