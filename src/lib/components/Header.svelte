@@ -1,6 +1,7 @@
 <script>
   import NavLinks from '$lib/components/NavLinks.svelte';
   import { onMount } from 'svelte';
+  import { onNavigate } from '$app/navigation';
 
   let menuNode;
   let menuToggle;
@@ -23,6 +24,8 @@
 
     window.addEventListener('resize', windowResizeHandler);
   });
+
+  onNavigate(() => navOpen = false);
 </script>
 
 <header class="site-header group">
